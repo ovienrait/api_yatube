@@ -1,0 +1,20 @@
+[
+  {
+    "model": "posts.group",
+    "pk": 1,
+    "fields": {
+      "title": "The most right group",
+      "slug": "group_1",
+      "description": "Random description for group_1"
+    }
+  },
+  {
+      "model": "posts.group",
+      "pk": 2,
+      "fields": {
+        "title": "The other one group",
+        "slug": "group_2",
+        "description": "Random description for group_2"
+      }
+    }
+]
