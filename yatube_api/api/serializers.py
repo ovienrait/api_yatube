@@ -8,10 +8,6 @@ class PostSerializer(serializers.ModelSerializer):
         read_only=True,
         slug_field='username'
     )
-    group = serializers.PrimaryKeyRelatedField(
-        queryset=Group.objects.all(),
-        required=False
-    )
 
     class Meta:
         model = Post
@@ -29,7 +25,10 @@ class CommentSerializer(serializers.ModelSerializer):
         read_only=True,
         slug_field='username'
     )
-    post = serializers.PrimaryKeyRelatedField(read_only=True)
+    post = serializers.PrimaryKeyRelatedField(
+        queryset=Post.objects.all(),
+        required=False
+    )
 
     class Meta:
         model = Comment

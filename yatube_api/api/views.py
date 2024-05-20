@@ -34,6 +34,7 @@ class CommentViewSet(AuthorPermissionsMixin):
         )
 
     def get_queryset(self):
-        return Comment.objects.filter(
-            post=Post.objects.get(id=self.kwargs.get('post_id'))
+        post = get_object_or_404(
+            Post, id=self.kwargs.get('post_id')
         )
+        return post.comments.all()
