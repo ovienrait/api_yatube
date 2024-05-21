@@ -8,7 +8,7 @@ from .mixins import AuthorPermissionsMixin
 
 
 class PostViewSet(AuthorPermissionsMixin):
-    queryset = Post.objects.all()
+    queryset = Post.objects.select_related('author', 'group').all()
     serializer_class = PostSerializer
 
     def perform_create(self, serializer):
@@ -21,7 +21,7 @@ class GroupViewSet(viewsets.ReadOnlyModelViewSet):
 
 
 class CommentViewSet(AuthorPermissionsMixin):
-    queryset = Comment.objects.all()
+    queryset = Comment.objects.select_related('author', 'post').all()
     serializer_class = CommentSerializer
 
     def perform_create(self, serializer):
